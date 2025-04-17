@@ -13,4 +13,6 @@
   32 33 34 35                                   \
   36 37 38 29
 
+#define LEELOO_MICRO
+
 #include "common.keymap"

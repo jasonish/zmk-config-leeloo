@@ -56,6 +56,10 @@ nice_view_spi: &spi0 {
 #define _SEMI &hmr_right LGUI SEMI
 #define _QUOT &hmr_right LGUI QUOT
 
+#define CTL_SEMI &hmr_right LCTL SEMI
+#define LCTL_ESC &hmr_left LCTL ESC
+#define CTL_QUOT &hmr_right LCTL QUOT
+
 // Layers
 #define _BASE 0
 #define _NAV  1
@@ -130,7 +134,7 @@ nice_view_spi: &spi0 {
     //       trigger hold after this time or another key is presed and
     //       released
     #define HMR_TAPPING_TERM_MS 200
-    
+
     hmr_left: home_row_mods_left {
       compatible = "zmk,behavior-hold-tap";
       label = "HMR_LEFT";
@@ -143,7 +147,7 @@ nice_view_spi: &spi0 {
       hold-trigger-key-positions = <RIGHT_KEYS THUMB_KEYS>;
       hold-trigger-on-release;
     };
-    
+
     hmr_right: home_row_mods_right {
       compatible = "zmk,behavior-hold-tap";
       label = "HMR_RIGHT";
@@ -156,7 +160,7 @@ nice_view_spi: &spi0 {
       hold-trigger-key-positions = <LEFT_KEYS THUMB_KEYS>;
       hold-trigger-on-release;
     };
-    
+
     // Autoshift.
     as: auto_shift {
       compatible = "zmk,behavior-hold-tap";
@@ -179,6 +183,19 @@ nice_view_spi: &spi0 {
     };
   };
 
+  combos {
+    compatible = "zmk,combos";
+    combo_cw {
+      timeout-ms = <50>;
+#ifdef LEELOO_MICRO
+      key-positions = <12 17>;
+#else
+      key-positions = <27 32>;
+#endif
+      bindings = <&caps_word>;
+    };
+  };
+
 #define SENSOR_BINDINGS <&inc_dec_kp &trans &trans &inc_dec_kp C_VOL_DN C_VOL_UP>
 
 #ifdef HAVE_6COLS
@@ -186,7 +203,7 @@ nice_view_spi: &spi0 {
 #else
 #define _C6(keycode)
 #endif
-  
+
   keymap {
     compatible = "zmk,keymap";
 
@@ -198,15 +215,15 @@ nice_view_spi: &spi0 {
         _C6(&kp ESC)  &kp N1     &kp N2     &kp N3     &kp N4     &kp N5                /**/           &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     _C6(&kp MINUS)
 #endif
         _C6(&kp TAB)  &kp Q      &kp W      &kp E      &kp R      &kp T                 /**/           &kp Y      &kp U      &kp I      &kp O      &kp P      _C6(&kp BSLH)
-        _C6(&kp LCTL) _A         _S         _D         _F         _G                    /**/           _H         _J         _K         _L         _QUOT      _C6(&kp SEMI)
-        _C6(&kp LSFT) &kp Z      &kp X      MOS_C      &kp V      &kp B     &kp ESC     /**/  _M_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   _C6(&kp RSFT)
-#if 1
-                                            &trans     MED_ESC    NAV_SPC   SFT_TAB     /**/  SYM_ENT  NUM_BS     FUN_DEL    &trans 
+#ifdef HAVE_NUMROW
+        _C6(LCTL_ESC) _A         _S         _D         _F         _G                    /**/           _H         _J         _K         _L         _SEMI      _C6(CTL_QUOT)
 #else
-                                            &trans     MED_ESC    NAV_BSPC  SFT_TAB     /**/  SYM_ENT  NUM_SPC    FUN_DEL    &trans 
+        _C6(LCTL_ESC) _A         _S         _D         _F         _G                    /**/           _H         _J         _K         _L         _QUOT      _C6(CTL_SEMI)
 #endif
+        _C6(&kp LSFT) &kp Z      &kp X      MOS_C      &kp V      &kp B     &kp ESC     /**/  _M_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   _C6(&kp RSFT)
+                                            &kp LGUI   MED_ESC    NAV_SPC   SFT_TAB     /**/  SYM_ENT  NUM_BS     FUN_DEL    &kp LGUI
         >;
-      
+
       sensor-bindings = SENSOR_BINDINGS;
     };
 
@@ -227,9 +244,9 @@ nice_view_spi: &spi0 {
         _C6(&kp F1)     &kp F2     &kp F3     &kp F4     &kp F5     &kp F6             /**/              &kp F7     &kp F8      &kp F9      &kp F10    &kp F11     _C6(&kp F12)
 #endif
         _C6(&trans)     BOOT       &trans     &kp UP     &trans     &trans             /**/              &kp INS    &kp K_UNDO  &trans      &kp LPAR   &kp RPAR    _C6(&trans)
-        _C6(&trans)     _LGUI      _LALT      _LSFT      _LCTL      &trans             /**/              &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT  &caps_word  _C6(&trans)
+        _C6(&trans)     _LGUI      _LALT      _LSFT      _LCTL      &trans             /**/              &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT  &trans      _C6(&trans)
         _C6(&trans)     &trans     &trans     &trans     &trans     &trans     &trans  /**/   &trans     &kp HOME   &kp PG_DN   &kp PG_UP   &kp END    &trans      _C6(&trans)
-                                              &trans     &trans     &trans     &trans  /**/   &trans     &trans     &trans      &trans
+                                              &trans     &trans     &trans     &trans  /**/   &trans     &kp BSPC   &trans      &trans
         >;
     };
 
@@ -326,7 +343,7 @@ nice_view_spi: &spi0 {
                                               &trans     &trans     &trans     &trans  /**/   &trans     &trans     &trans     &trans
         >;
     };
-    
+
   };
 };
 
