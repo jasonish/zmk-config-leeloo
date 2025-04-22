@@ -320,7 +320,7 @@ nice_view_spi: &spi0 {
         _C6(&trans)     &trans     &trans     &trans     &trans     &trans             /**/              &trans     &trans     &trans     &trans     &trans        _C6(&trans)
         _C6(&trans)     &trans     &trans     &trans     &trans     &trans             /**/              _MSL       _MSD       _MSU       _MSR       &trans        _C6(&trans)
         _C6(&trans)     &trans     &trans     &trans     &trans     &trans     &trans  /**/   &trans     _MWL       _MWD       _MWU       _MWR       &trans        _C6(&trans)
-                                              &trans     &trans     &trans     &trans  /**/   _MBL       _MBR       _MBM       &trans
+                                              &trans     &trans     &trans     &trans  /**/   _MBR       _MBL       _MBM       &trans
         >;
     };
 
