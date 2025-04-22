@@ -69,6 +69,8 @@ nice_view_spi: &spi0 {
 #define _MOS  5
 #define _MED 6
 #define _LMS 7
+#define _LBRC 8
+#define _RBRC 9
 
 // Left thumbs
 #define MOS_TAB &lt _MOS TAB
@@ -81,6 +83,10 @@ nice_view_spi: &spi0 {
 #define FUN_DEL &lt _FUN DEL
 #define NUM_BS  &lt _NUM BSPC
 #define NUM_SPC  &lt _NUM SPC
+
+// Layer hold keys
+#define BRC_I  &lt _LBRC I
+#define BRC_E  &lt _RBRC E
 
 // Just some short versions
 #define _PAUSE &kp PAUSE_BREAK
@@ -221,7 +227,7 @@ nice_view_spi: &spi0 {
 #ifdef HAVE_NUMROW
         _C6(&kp ESC)  &kp N1     &kp N2     &kp N3     &kp N4     &kp N5                /**/           &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     _C6(&kp MINUS)
 #endif
-        _C6(&kp TAB)  &kp Q      &kp W      &kp E      &kp R      &kp T                 /**/           &kp Y      &kp U      &kp I      &kp O      &kp P      _C6(&kp BSLH)
+        _C6(&kp TAB)  &kp Q      &kp W      BRC_E      &kp R      &kp T                 /**/           &kp Y      &kp U      BRC_I      &kp O      &kp P      _C6(&kp BSLH)
 #ifdef HAVE_NUMROW
         _C6(LCTL_ESC) _A         _S         _D         _F         _G                    /**/           _H         _J         _K         _L         _SEMI      _C6(CTL_QUOT)
 #else
@@ -353,6 +359,38 @@ nice_view_spi: &spi0 {
         _C6(&to 0 )     &to 0      _MSL       _MSU       _MSD       _MSR               /**/              &to 0      &to 0      &to 0      &to 0      &to 0         _C6(&to 0 )
         _C6(&to 0 )     &to 0      &to 0      _MWU       _MWD       &to 0      &to 0   /**/   &to 0      &to 0      &to 0      &to 0      &to 0      &to 0         _C6(&to 0 )
                                               &to 0      &to 0      _MBL       &to 0   /**/   &to 0      &to 0      &to 0      &to 0 
+      >;
+    };
+
+    // Layer 8
+    // - Braces layer (left side)
+    // - Focused on all types of braces and brackets
+    braces_layer {
+      display-name = " Braces";
+      bindings = <
+#ifdef HAVE_NUMROW
+        _C6(&trans)     &trans     &trans     &trans     &trans     &trans             /**/              &trans     &trans     &trans     &trans     &trans        _C6(&trans)
+#endif
+        _C6(&trans)     &trans     &trans     &kp LBKT   &kp RBKT   &trans             /**/              &trans     &trans     &trans     &trans     &trans        _C6(&trans)
+        _C6(&trans)     &trans     &trans     &kp LPAR   &kp RPAR   &trans             /**/              &trans     &trans     &trans     &trans     &trans        _C6(&trans)
+        _C6(&trans)     &trans     &trans     &kp LBRC   &kp RBRC   &trans     &trans  /**/   &trans     &trans     &trans     &trans     &trans     &trans        _C6(&trans)
+                                              &trans     &trans     &trans     &trans  /**/   &trans     &trans     &trans     &trans
+      >;
+    };
+
+    // Layer 9
+    // - Right-side braces layer
+    // - Mirrored version of the braces layer
+    braces_right_layer {
+      display-name = "BracesR";
+      bindings = <
+#ifdef HAVE_NUMROW
+        _C6(&trans)     &trans     &trans     &trans     &trans     &trans             /**/              &trans     &trans     &trans     &trans     &trans        _C6(&trans)
+#endif
+        _C6(&trans)     &trans     &trans     &trans     &trans     &trans             /**/              &trans     &kp LBKT   &kp RBKT   &trans     &trans        _C6(&trans)
+        _C6(&trans)     &trans     &trans     &trans     &trans     &trans             /**/              &trans     &kp LPAR   &kp RPAR   &trans     &trans        _C6(&trans)
+        _C6(&trans)     &trans     &trans     &trans     &trans     &trans     &trans  /**/   &trans     &trans     &kp LBRC   &kp RBRC   &trans     &trans        _C6(&trans)
+                                              &trans     &trans     &trans     &trans  /**/   &trans     &trans     &trans     &trans
       >;
     };
 
