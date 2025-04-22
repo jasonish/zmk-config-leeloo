@@ -228,7 +228,7 @@ nice_view_spi: &spi0 {
         _C6(LCTL_ESC) _A         _S         _D         _F         _G                    /**/           _H         _J         _K         _L         _QUOT      _C6(CTL_SEMI)
 #endif
         _C6(&kp LSFT) &kp Z      &kp X      MOS_C      &kp V      &kp B     &kp ESC     /**/  _M_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   _C6(&kp RSFT)
-                                            &kp LGUI   MED_ESC    NAV_SPC   SFT_TAB     /**/  SYM_ENT  NUM_BS     FUN_DEL    &kp LGUI
+                                            &trans     MED_ESC    NAV_SPC   SFT_TAB     /**/  SYM_ENT  NUM_BS     FUN_DEL    &trans
       >;
       
       sensor-bindings = SENSOR_BINDINGS;
