@@ -18,3 +18,8 @@
 #define QW <0 1>
 
 #include "common.keymap"
+
+// Local Variables:
+// mode: c
+// c-basic-offset: 2
+// End:
