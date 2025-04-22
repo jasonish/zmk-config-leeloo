@@ -67,7 +67,8 @@ nice_view_spi: &spi0 {
 #define _SYM  3
 #define _FUN  4
 #define _MOS  5
-#define _MED  6
+#define _MED 6
+#define _LMS 7
 
 // Left thumbs
 #define MOS_TAB &lt _MOS TAB
@@ -251,7 +252,7 @@ nice_view_spi: &spi0 {
 #endif
         _C6(&trans)     BOOT       &trans     &kp UP     &trans     &trans             /**/              &kp INS    &kp K_UNDO  &trans      &kp LPAR   &kp RPAR    _C6(&trans)
         _C6(&trans)     _LGUI      _LALT      _LSFT      _LCTL      &trans             /**/              &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT  &trans      _C6(&trans)
-        _C6(&trans)     &trans     &trans     &trans     &trans     &trans     &trans  /**/   &trans     &kp HOME   &kp PG_DN   &kp PG_UP   &kp END    &trans      _C6(&trans)
+        _C6(&trans)     &trans     &to _LMS   &trans     &trans     &trans     &trans  /**/   &trans     &kp HOME   &kp PG_DN   &kp PG_UP   &kp END    &trans      _C6(&trans)
                                               &trans     &trans     &trans     &trans  /**/   &trans     &kp BSPC   &trans      &trans
         >;
     };
@@ -335,6 +336,20 @@ nice_view_spi: &spi0 {
         _C6(&trans)     _BT_CLR    _BT_CLRA   &trans     &trans     &trans             /**/              &trans     _VOL_DN    _VOL_UP    &trans     &trans        _C6(&trans)
         _C6(&trans)     BT0        BT1        BT2        BT3        BT4        &trans  /**/   &trans     &trans     &trans     &trans     &trans     &trans        _C6(&trans)
                                               &trans     &trans     &trans     &trans  /**/   _M_STOP    _M_PP      _M_MUTE    &trans
+        >;
+    };
+
+    lmouse {
+      display-name = " Lmouse";
+      bindings = <
+        //              Q          W          E          R          T                                    Y
+#ifdef HAVE_NUMROW
+        _C6(&to 0 )     &to 0      &to 0      &to 0      &to 0      &to 0              /**/              &to 0      &to 0      &to 0      &to 0      &to 0         _C6(&to 0 )
+#endif
+        _C6(&to 0 )     &to 0      &to 0      &to 0       &to 0      &to 0             /**/              &to 0      &to 0      &to 0      &to 0      &to 0         _C6(&to 0 )
+        _C6(&to 0 )     &to 0      _MSL       _MSU       _MSD       _MSR               /**/              &to 0      &to 0      &to 0      &to 0      &to 0         _C6(&to 0 )
+        _C6(&to 0 )     &to 0      &to 0      _MWU       _MWD       &to 0      &to 0   /**/   &to 0      &to 0      &to 0      &to 0      &to 0      &to 0         _C6(&to 0 )
+                                              &to 0      &to 0      _MBL       &to 0   /**/   &to 0      &to 0      &to 0      &to 0 
         >;
     };
 
