@@ -260,6 +260,9 @@ nice_view_spi: &spi0 {
     // Layer 2
     // - Num layer
     // - Miryoku
+#define CTL_DN &hmr_right LCTL DOWN
+#define SFT_UP &hmr_right LSFT UP
+#define ALT_L &hmr_right LALT LEFT
     num_layer {
       display-name = "    Num";
       bindings = <
@@ -267,8 +270,8 @@ nice_view_spi: &spi0 {
         _C6(&kp F1)     &kp F2     &kp F3     &kp F4     &kp F5     &kp F6             /**/               &kp F7     &kp F8     &kp F9     &kp F10    &kp F11  _C6(&kp F12)
 #endif
         _C6(&trans)     AS(LBKT)   AS(N7)     AS(N8)     AS(N9)     AS(RBKT)            /**/              &trans     &trans     &trans     &trans     BOOT     _C6(&trans)
-        _C6(&trans)     AS(SEMI)   AS(N4)     AS(N5)     AS(N6)     AS(EQUAL)           /**/              &trans     &trans     &trans     &trans     &trans   _C6(&trans)
-        _C6(&trans)     AS(GRAVE)  AS(N1)     AS(N2)     AS(N3)     AS(BSLH)  &trans    /**/   &trans     &trans     &kp PG_DN  &kp PG_UP  &trans     &trans   _C6(&trans)
+        _C6(&trans)     AS(SEMI)   AS(N4)     AS(N5)     AS(N6)     AS(EQUAL)           /**/              &kp LEFT   CTL_DN     SFT_UP     ALT_L      &trans   _C6(&trans)
+        _C6(&trans)     AS(GRAVE)  AS(N1)     AS(N2)     AS(N3)     AS(BSLH)  &trans    /**/   &trans     &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &trans   _C6(&trans)
                                               &trans     &kp DOT    AS(N0)    &kp MINUS /**/   &trans     &trans     &trans     &trans
         >;
     };
