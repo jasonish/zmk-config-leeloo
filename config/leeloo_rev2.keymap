@@ -17,4 +17,6 @@
 
 #define LEELOO_REV2
 
+#define QW <12 13>
+
 #include "common.keymap"

@@ -15,4 +15,6 @@
 
 #define LEELOO_MICRO
 
+#define QW <0 1>
+
 #include "common.keymap"

@@ -194,6 +194,12 @@ nice_view_spi: &spi0 {
 #endif
       bindings = <&caps_word>;
     };
+
+    combo_esc {
+      timeout-ms = <50>;
+      key-positions = QW;
+      bindings = <&kp ESC>;
+    };
   };
 
 #define SENSOR_BINDINGS <&inc_dec_kp &trans &trans &inc_dec_kp C_VOL_DN C_VOL_UP>
