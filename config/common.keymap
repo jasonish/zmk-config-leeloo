@@ -74,15 +74,15 @@ nice_view_spi: &spi0 {
 #define _BOOT 10
 
 // Left thumbs
-#define MOS_TAB &lt _MOS TAB
-#define MED_ESC &lt _MED ESC
-#define NAV_SPC &lt _NAV SPC
+#define MOS_TAB  &lt _MOS TAB
+#define MED_ESC  &lt _MED ESC
+#define NAV_SPC  &lt _NAV SPC
 #define NAV_BSPC &lt _NAV BSPC
 
 // Right thumbs
-#define SYM_ENT &lt _SYM ENTER
-#define FUN_DEL &lt _FUN DEL
-#define NUM_BS  &lt _NUM BSPC
+#define SYM_ENT  &lt _SYM ENTER
+#define FUN_DEL  &lt _FUN DEL
+#define NUM_BS   &lt _NUM BSPC
 #define NUM_SPC  &lt _NUM SPC
 
 // Layer hold keys
@@ -228,16 +228,16 @@ nice_view_spi: &spi0 {
       display-name = " Default";
       bindings = <
 #ifdef HAVE_NUMROW
-        _C6(&kp ESC)  &kp N1     &kp N2     &kp N3     &kp N4     &kp N5                /**/           &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     _C6(&kp MINUS)
+        _C6(&kp ESC)  &kp N1     &kp N2     &kp N3     &kp N4     &kp N5                /**/           &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     _C6(&kp BSPC)
 #endif
-        _C6(&kp TAB)  &kp Q      &kp W      BRC_E      &kp R      &kp T                 /**/           &kp Y      &kp U      BRC_I      &kp O      &kp P      _C6(&kp BSLH)
-#ifdef HAVE_NUMROW
-        _C6(LCTL_ESC) _A         _S         _D         _F         _G                    /**/           _H         _J         _K         _L         _SEMI      _C6(CTL_QUOT)
-#else
+        _C6(&kp TAB)  &kp Q      &kp W      BRC_E      &kp R      &kp T                 /**/           &kp Y      &kp U      BRC_I      &kp O      &kp P      _C6(&kp BSPC)
         _C6(LCTL_ESC) _A         _S         _D         _F         _G                    /**/           _H         _J         _K         _L         _QUOT      _C6(CTL_SEMI)
-#endif
-        _C6(&kp LSFT) &kp Z      &kp X      MOS_C      &kp V      &kp B     &kp ESC     /**/  _M_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   _C6(&kp RSFT)
+        _C6(&kp LSFT) &kp Z      &kp X      MOS_C      &kp V      &kp B     &kp ESC     /**/  _M_MUTE  &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   _C6(&kp PGUP)
+#if 1
                                             BT_PGUP    MED_ESC    NAV_SPC   SFT_TAB     /**/  SYM_ENT  NUM_BS     FUN_DEL    BT_PGDN
+#else
+                                            BT_PGUP    MED_ESC    NAV_BSPC  SFT_TAB     /**/  SYM_ENT  NUM_SPC     FUN_DEL    BT_PGDN
+#endif
       >;
       
       sensor-bindings = SENSOR_BINDINGS;
@@ -271,7 +271,7 @@ nice_view_spi: &spi0 {
     // - Miryoku
 #define CTL_DN &hmr_right LCTL DOWN
 #define SFT_UP &hmr_right LSFT UP
-#define ALT_L  &hmr_right LALT LEFT
+#define ALT_R  &hmr_right LALT RIGHT
     num_layer {
       display-name = "    Num";
       bindings = <
@@ -279,7 +279,7 @@ nice_view_spi: &spi0 {
         _C6(&kp F1)     &kp F2     &kp F3     &kp F4     &kp F5     &kp F6             /**/               &kp F7     &kp F8     &kp F9     &kp F10    &kp F11  _C6(&kp F12)
 #endif
         _C6(&trans)     AS(LBKT)   AS(N7)     AS(N8)     AS(N9)     AS(RBKT)            /**/              &trans     &trans     &trans     &trans     &trans   _C6(&trans)
-        _C6(&trans)     AS(SEMI)   AS(N4)     AS(N5)     AS(N6)     AS(EQUAL)           /**/              &kp LEFT   CTL_DN     SFT_UP     ALT_L      &trans   _C6(&trans)
+        _C6(&trans)     AS(SEMI)   AS(N4)     AS(N5)     AS(N6)     AS(EQUAL)           /**/              &kp LEFT   CTL_DN     SFT_UP     ALT_R      &trans   _C6(&trans)
         _C6(&trans)     AS(GRAVE)  AS(N1)     AS(N2)     AS(N3)     AS(BSLH)  &trans    /**/   &trans     &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &trans   _C6(&trans)
                                               &trans     &kp DOT    AS(N0)    AS(MINUS) /**/   &trans     &trans     &trans     &trans
       >;
