@@ -279,7 +279,7 @@ nice_view_spi: &spi0 {
         _C6(&trans)     AS(LBKT)   AS(N7)     AS(N8)     AS(N9)     AS(RBKT)            /**/              &trans     &trans     &trans     &trans     &trans   _C6(&trans)
         _C6(&trans)     AS(SEMI)   AS(N4)     AS(N5)     AS(N6)     AS(EQUAL)           /**/              &kp LEFT   CTL_DN     SFT_UP     ALT_L      &trans   _C6(&trans)
         _C6(&trans)     AS(GRAVE)  AS(N1)     AS(N2)     AS(N3)     AS(BSLH)  &trans    /**/   &trans     &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &trans   _C6(&trans)
-                                              &trans     &kp DOT    AS(N0)    &kp MINUS /**/   &trans     &trans     &trans     &trans
+                                              &trans     &kp DOT    AS(N0)    AS(MINUS) /**/   &trans     &trans     &trans     &trans
       >;
     };
 
